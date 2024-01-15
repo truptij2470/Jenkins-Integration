@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: test.AmazonSearchTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 2, Time elapsed: 0.69 s <<< FAILURE! - in test.AmazonSearchTest
+test.AmazonSearchTest.setUp  Time elapsed: 0.569 s  <<< FAILURE!
+java.lang.IllegalStateException: The driver executable does not exist: E:\jenkins_java_workspace\test\path\to\chromedriver
+	at test.AmazonSearchTest.setUp(AmazonSearchTest.java:20)
+

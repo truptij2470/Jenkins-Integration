@@ -1,0 +1,45 @@
+package test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class AmazonSearchTest {
+
+    private WebDriver driver;
+    private final String amazonUrl = "https://www.amazon.in/";
+
+    @BeforeTest
+    public void setUp() {
+        System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
+        driver = new ChromeDriver();
+        driver.get(amazonUrl);
+    }
+
+    @Test
+    public void amazonSearchScenario() {
+        // Enter a product
+        WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
+        searchBox.sendKeys("Laptop");
+
+        // Click on search button
+        WebElement searchButton = driver.findElement(By.xpath("//input[@value='Go']"));
+        searchButton.click();
+
+        // Verify the title of the result page
+        String resultPageTitle = driver.getTitle();
+        Assert.assertTrue(resultPageTitle.contains("Laptop"), "Search result page title is incorrect");
+    }
+
+    @AfterTest
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
